@@ -1,9 +1,9 @@
-package com.app.client.presentation.dto;
+package com.app.client.controller.request;
 
 
 import java.time.LocalDate;
 
-public record ClientDto(
+public record ClientRequest(
         String name,
         String cpf,
         LocalDate birthdate,
