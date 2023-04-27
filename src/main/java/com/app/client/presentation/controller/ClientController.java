@@ -1,20 +1,27 @@
 package com.app.client.presentation.controller;
 
+import com.app.client.applicationservice.clientsservice.CreateClientsService;
+import com.app.client.applicationservice.domain.entity.Client;
 import com.app.client.presentation.dto.ClientDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.app.client.presentation.mapper.ClientMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "v1.0/clients")
+@RequiredArgsConstructor
 public class ClientController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ClientController.class);
+    private final CreateClientsService createClientsService;
+    private final ClientMapper clientMapper;
+
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public ClientDto createClient(@RequestBody ClientDto clientDto) {
-        LOGGER.info(clientDto.toString());
+        final Client client = clientMapper.from(clientDto);
+
+        createClientsService.create(client);
         return clientDto;
     }
 }
