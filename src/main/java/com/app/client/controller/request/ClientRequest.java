@@ -1,15 +1,14 @@
 package com.app.client.controller.request;
 
-
 import java.time.LocalDate;
 
 public record ClientRequest(
         String name,
         String cpf,
         LocalDate birthdate,
-        AddressDto address
+        AddressRequest address
 ) {
 
-    public record AddressDto(Integer houseNumber, String complement, String cep) {
+    public record AddressRequest(Integer houseNumber, String complement, String cep) {
     }
 }

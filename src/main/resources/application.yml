@@ -1,1 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: client-app
 
+  cloud:
+    openfeign:
+      client:
+        config:
+          viaCepClient:
+            connectTimeout: 500
+            readTimeout: 300
+            loggerLevel: info
+
+
+
+
+#  spring.cloud.openfeign.client.config.default.connectTimeout=5000
+#  spring.cloud.openfeign.client.config.default.readTimeout=5000
+#  spring.cloud.openfeign.client.config.default.loggerLevel=full
+#  spring.cloud.openfeign.client.config.default.errorDecoder=org.springframework.cloud.openfeign.FeignClientUsingPropertiesTests.DefaultErrorDecoder
+#  spring.cloud.openfeign.client.config.default.retryer=org.springframework.cloud.openfeign.FeignClientUsingPropertiesTests.NoRetryer
+#  spring.cloud.openfeign.client.config.default.dismiss404=true
