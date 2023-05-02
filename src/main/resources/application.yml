@@ -9,12 +9,18 @@ spring:
       client:
         config:
           viaCepClient:
-            connectTimeout: 500
-            readTimeout: 300
-            loggerLevel: info
+            connectTimeout: 1000
+            readTimeout: 500
+            loggerLevel: BASIC
+
+  datasource:
+    url: postgresql://localhost:5432/postgres
+    username: admin
+    password: senha123
 
 
-
+url:
+  viacep.host: https://viacep.com.br/ws
 
 #  spring.cloud.openfeign.client.config.default.connectTimeout=5000
 #  spring.cloud.openfeign.client.config.default.readTimeout=5000

@@ -2,6 +2,7 @@ package com.app.client.model;
 
 import com.app.client.utils.ValidationCustom;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 
 public record Address(
         String street,
@@ -12,6 +13,7 @@ public record Address(
         @Pattern(regexp = "^\\d{5}-\\d{3}$", message = "cep invalid, must be format xxxxx-xxx")
         String cep
 ) {
+    @Builder
     public Address(String street, String neighborhood, String state, Integer houseNumber, String complement,
     String cep) {
         this.street = street;

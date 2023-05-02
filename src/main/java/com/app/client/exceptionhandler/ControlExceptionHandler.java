@@ -1,5 +1,6 @@
 package com.app.client.exceptionhandler;
 
+import com.app.client.exception.AddressNotFound;
 import feign.Feign;
 import feign.FeignException;
 import jakarta.validation.ConstraintViolationException;
@@ -22,4 +23,15 @@ public class ControlExceptionHandler {
         problemDetail.setDetail(exception.getConstraintViolations().toString());
         return problemDetail;
     }
+
+    @ExceptionHandler(AddressNotFound.class)
+    public ProblemDetail ConstraintViolationExceptionHandle(AddressNotFound exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setType(URI.create("https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/404"));
+        problemDetail.setProperty("timestamp", LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return problemDetail;
+    }
+
+
 }
