@@ -4,9 +4,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -25,11 +26,11 @@ public class AddressEntity {
     String complement;
     String cep;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "created_at")
     LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     @Column(name = "updated_at")
     LocalDateTime updatedAt;
 
@@ -45,5 +46,40 @@ public class AddressEntity {
         this.complement = complement;
         this.cep = cep;
     }
-}
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public Integer getHouseNumber() {
+        return houseNumber;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}

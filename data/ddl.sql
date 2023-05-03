@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS CLIENT(
         id uuid NOT NULL,
         name varchar(300),
-        cpf varchar(11),
+        cpf varchar(11) UNIQUE,
         birthdate date,
         address_id uuid unique,
         created_at timestamp,

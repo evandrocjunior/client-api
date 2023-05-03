@@ -1,8 +1,7 @@
 package com.app.client.exceptionhandler;
 
 import com.app.client.exception.AddressNotFound;
-import feign.Feign;
-import feign.FeignException;
+import com.app.client.exception.CPFAlreadyExistException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -33,5 +32,12 @@ public class ControlExceptionHandler {
         return problemDetail;
     }
 
-
+    @ExceptionHandler(CPFAlreadyExistException.class)
+    public ProblemDetail CPFAlreadyExistExceptionHandleException(CPFAlreadyExistException exception) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setType(URI.create("https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/400"));
+        problemDetail.setProperty("timestamp", LocalDateTime.now());
+        problemDetail.setDetail(exception.getMessage());
+        return problemDetail;
+    }
 }

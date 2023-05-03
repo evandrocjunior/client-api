@@ -1,10 +1,9 @@
 package com.app.client.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,7 +12,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "CLIENT")
 @Immutable
-@Getter
 public class ClientEntity {
 
     @Id
@@ -26,11 +24,11 @@ public class ClientEntity {
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     AddressEntity address;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "createdAt")
     LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     @Column(name = "updatedAt")
     LocalDateTime updatedAt;
 
@@ -44,5 +42,33 @@ public class ClientEntity {
         this.cpf = cpf;
         this.birthdate = birthdate;
         this.address = address;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public AddressEntity getAddress() {
+        return address;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 }
