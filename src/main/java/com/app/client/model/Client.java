@@ -2,9 +2,6 @@ package com.app.client.model;
 
 import com.app.client.apiclient.dto.AddressViaCep;
 import com.app.client.utils.ValidationCustom;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import org.hibernate.validator.constraints.br.CPF;
@@ -20,21 +17,22 @@ public record Client(
         LocalDate birthdate,
         Address address
 ) {
-    @Builder
+    @Builder(toBuilder = true)
     public Client(String name, String cpf, LocalDate birthdate, Address address) {
         this.name = name;
-        this.cpf = cpf;
+        this.cpf = formatCpf(cpf);
         this.birthdate = birthdate;
         this.address = address;
         ValidationCustom.validator(this);
     }
 
+    private static String formatCpf(String cpf) {
+        return cpf.replaceAll("[-.]","");
+    }
+
 
     public Client updateAddressFrom(AddressViaCep addressViaCep) {
-        return Client.builder()
-                .cpf(this.cpf)
-                .name(this.name)
-                .birthdate(this.birthdate)
+        return this.toBuilder()
                 .address(Address.builder()
                         .cep(this.address.cep())
                         .state(addressViaCep.uf())

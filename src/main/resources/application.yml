@@ -14,10 +14,11 @@ spring:
             loggerLevel: BASIC
 
   datasource:
-    url: postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
     username: admin
     password: senha123
-
+  jpa:
+    generate-ddl: false
 
 url:
   viacep.host: https://viacep.com.br/ws
