@@ -3,10 +3,9 @@ package com.app.client.model;
 import com.app.client.apiclient.dto.AddressViaCep;
 import com.app.client.utils.ValidationCustom;
 import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import lombok.Builder;
 import org.hibernate.validator.constraints.br.CPF;
-
-import java.time.LocalDate;
 
 
 public record Client(
@@ -27,7 +26,7 @@ public record Client(
     }
 
     private static String formatCpf(String cpf) {
-        return cpf.replaceAll("[-.]","");
+        return cpf.replaceAll("[-.]", "");
     }
 
 

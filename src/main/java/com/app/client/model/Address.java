@@ -15,7 +15,7 @@ public record Address(
 ) {
     @Builder
     public Address(String street, String neighborhood, String state, Integer houseNumber, String complement,
-    String cep) {
+                   String cep) {
         this.street = street;
         this.neighborhood = neighborhood;
         this.state = state;

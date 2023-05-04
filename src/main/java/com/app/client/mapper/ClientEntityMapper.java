@@ -10,5 +10,6 @@ import org.mapstruct.Mapper;
 public interface ClientEntityMapper {
 
     ClientEntity from(Client client);
+
     AddressEntity from(Address address);
 }

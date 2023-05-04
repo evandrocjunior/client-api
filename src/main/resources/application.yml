@@ -9,7 +9,7 @@ spring:
       client:
         config:
           viaCepClient:
-            connectTimeout: 1000
+            connectTimeout: 3000
             readTimeout: 500
             loggerLevel: BASIC
   sql:

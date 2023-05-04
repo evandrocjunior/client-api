@@ -1,7 +1,6 @@
 package com.app.client.controller.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;

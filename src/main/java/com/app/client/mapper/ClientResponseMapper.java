@@ -9,5 +9,6 @@ import org.mapstruct.Mapper;
 public interface ClientResponseMapper {
 
     ClientResponse from(ClientEntity client);
+
     ClientResponse.AddressResponse from(AddressEntity address);
 }
