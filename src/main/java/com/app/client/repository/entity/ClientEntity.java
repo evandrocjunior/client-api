@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -41,6 +42,7 @@ public class ClientEntity {
     }
 
 
+    @Builder
     public ClientEntity(String name, String cpf, LocalDate birthdate, AddressEntity address) {
         this.id = UUID.randomUUID();
         this.name = name;

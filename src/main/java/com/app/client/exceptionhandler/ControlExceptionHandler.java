@@ -1,6 +1,6 @@
 package com.app.client.exceptionhandler;
 
-import com.app.client.exception.AddressNotFound;
+import com.app.client.exception.AddressNotFoundException;
 import com.app.client.exception.CPFAlreadyExistException;
 import jakarta.validation.ConstraintViolationException;
 import java.net.URI;
@@ -24,8 +24,8 @@ public class ControlExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler(AddressNotFound.class)
-    public ProblemDetail constraintViolationExceptionHandle(AddressNotFound exception) {
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ProblemDetail constraintViolationExceptionHandle(AddressNotFoundException exception) {
         final ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
         problemDetail.setType(URI.create("https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status/404"));
         problemDetail.setProperty(TIMESTAMP, LocalDateTime.now());

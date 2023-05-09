@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,6 +19,8 @@ public class AddressEntity {
     UUID id;
     String street;
     String neighborhood;
+
+    String city;
     String state;
     @Column(name = "house_number")
     Integer houseNumber;
@@ -35,10 +38,12 @@ public class AddressEntity {
     private AddressEntity() {
     }
 
-    public AddressEntity(String street, String neighborhood, String state, Integer houseNumber, String complement, String cep) {
+    @Builder
+    public AddressEntity(String street, String neighborhood, String city, String state, Integer houseNumber, String complement, String cep) {
         this.id = UUID.randomUUID();
         this.street = street;
         this.neighborhood = neighborhood;
+        this.city = city;
         this.state = state;
         this.houseNumber = houseNumber;
         this.complement = complement;
@@ -55,6 +60,10 @@ public class AddressEntity {
 
     public String getNeighborhood() {
         return neighborhood;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public String getState() {

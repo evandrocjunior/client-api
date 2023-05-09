@@ -4,7 +4,7 @@ import com.app.client.apiclient.ViaCepApiClient;
 import com.app.client.apiclient.dto.AddressViaCep;
 import com.app.client.controller.request.ClientRequest;
 import com.app.client.controller.response.ClientResponse;
-import com.app.client.exception.AddressNotFound;
+import com.app.client.exception.AddressNotFoundException;
 import com.app.client.exception.CPFAlreadyExistException;
 import com.app.client.exception.ClientNotFoundException;
 import com.app.client.mapper.ClientEntityMapper;
@@ -52,7 +52,7 @@ public class ClientService {
     public AddressViaCep getAddressViaCep(String cep) {
         final AddressViaCep addressViaCep = viaCepApiClient.getAddress(cep);
         if (addressViaCep.cep() == null) {
-            throw new AddressNotFound("Address not exist to cep %s".formatted(cep));
+            throw new AddressNotFoundException("Address not exist to cep %s".formatted(cep));
         }
         return addressViaCep;
     }
