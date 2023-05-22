@@ -85,7 +85,8 @@ class ClientServiceTest {
         when(viaCepApiClient.getAddress(cepArgumentCaptor.capture())).thenReturn(addressViaCep);
 
         final ClientRequest clientRequest = clientRequestFactory();
-        AddressNotFoundException addressNotFound = assertThrows(AddressNotFoundException.class, () -> clientService.create(clientRequest));
+        AddressNotFoundException addressNotFound = assertThrows(AddressNotFoundException.class,
+                () -> clientService.create(clientRequest));
 
         assertEquals(addressNotFound.getMessage(), "Address not exist to cep 01001-000");
     }
